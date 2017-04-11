@@ -6,32 +6,41 @@ Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://j
 
 ### Markdown
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+<?php
+# lystk1958.com.cn Enterprise Content Management System 
+# Copyright (C) lystk1958 Co.,Ltd (http://www.lystk1958.com.cn). All rights reserved. 
+require_once '../include/common.inc.php';
+if(!$id && $class1)$id = $class1;
+if(!is_numeric($id))okinfo('../404.html');
+$show = $db->get_one("SELECT * FROM $met_column WHERE id='$id' and module=1");
+if(!$show||!$show['isshow']){
+okinfo('../404.html');
+}
+$metaccess=$show[access];
+if($show[classtype]==3){
+$show3 = $db->get_one("SELECT * FROM $met_column WHERE id='$show[bigclass]'");
+$class1=$show3[bigclass];
+$class2=$show[bigclass];
+$class3=$show[id];
+}else{
+$class1=$show[bigclass]?$show[bigclass]:$id;
+$class2=$show[bigclass]?$id:"0";
+$class3=0;
+}
 
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/186643/myGitTest/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+require_once '../include/head.php';
+$class1_info=$class_list[$class1];
+//$class1_list=$class1_info;
+$class2_info=$class_list[$class2];
+$class3_info=$class_list[$class3];
+$show[content]=contentshow('<div>'.$show[content].'</div>');
+$show[description]=$show[description]?$show[description]:$met_description;
+$show[keywords]=$show[keywords]?$show[keywords]:$met_keywords;
+$met_title=$met_title?$show['name'].'-'.$met_title:$show['name'];
+if($show['ctitle']!='')$met_title=$show['ctitle'];
+require_once '../public/php/methtml.inc.php';
+include template('show');
+footer();
+# This program is an open source system, commercial use, please consciously to purchase commercial license.
+# Copyright (C) lystk1958 Co., Ltd. (http://www.lystk1958.com.cn). All rights reserved.
+?>

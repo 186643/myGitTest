@@ -23,4 +23,12 @@ include template('admin/admin_add');
 footer();
 # This program is an open source system, commercial use, please consciously to purchase commercial license.
 # Copyright (C) lystk1958 Co., Ltd. (http://www.lystk1958.com.cn). All rights reserved.
-?>
+?><dl>
+	<dt></dt>
+	<dd></dd>
+</dl><ul><ol>
+	<li></li>
+	<li></li>
+	<li></li>
+</ol></ul>
+

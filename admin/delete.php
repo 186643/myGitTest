@@ -1,9 +1,6 @@
 <? php
 # Lystk1958   Enterprise Content Management System 
 # Copyright (C) Lystk1958  Co.,Ltd (http://www.lystk1958.com.cn). All rights reserved. 
-<?php
-# MetInfo Enterprise Content Management System 
-# Copyright (C) MetInfo Co.,Ltd (http://www.metinfo.cn). All rights reserved. 
 require_once '../login/login_check.php';
 $adminno = $db->counter($met_admin_table, " where admin_type like '%metinfo%' and id<>'$id'", "*");
 if($adminno<1)metsave('-1',$lang_deleteJS);
